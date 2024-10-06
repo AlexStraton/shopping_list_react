@@ -14,7 +14,7 @@ const initialShoppingList = [
 
 function App() {
   const [shoppingList, setShoppingList] = useState(initialShoppingList);
-  const [addedItem, setAddedItem] = useState({});
+  const [addedItem, setAddedItem] = useState({ name: "", price: "" });
   const [showAddItem, setShowAddItem] = useState(false);
 
   function updateShoppingList(id, amount) {
@@ -29,6 +29,21 @@ function App() {
       });
     });
   }
+
+  function addItem(item) {
+    setShoppingList((prevItems) => [
+      {
+        ...item,
+        id: prevItems.length + 1,
+        quantity: 1,
+        unitPrice: parseFloat(item.price),
+        price: parseFloat(item.price),
+      },
+      ...prevItems,
+    ]);
+    setAddedItem({ name: "", price: "" });
+  }
+
   return (
     <>
       <div>
@@ -37,14 +52,17 @@ function App() {
         </button>
         {showAddItem ? (
           <AddItem
-            shoppingList={shoppingList}
-            setShoppingList={setShoppingList}
+            addItem={addItem}
+            addedItem={addedItem}
+            setAddedItem={setAddedItem}
           />
         ) : null}
 
         <Shopping_List
           updateShoppingList={updateShoppingList}
           shoppingList={shoppingList}
+          addedItem={addedItem}
+          addItem={addItem}
         />
       </div>
     </>

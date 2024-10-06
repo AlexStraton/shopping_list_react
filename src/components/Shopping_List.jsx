@@ -1,7 +1,11 @@
 import { CiSquarePlus } from "react-icons/ci";
 import { CiSquareMinus } from "react-icons/ci";
 
-export default function Shopping_List({ updateShoppingList, shoppingList }) {
+export default function Shopping_List({
+  updateShoppingList,
+  shoppingList,
+  addItem,
+}) {
   if (!shoppingList || !Array.isArray(shoppingList)) {
     return <p>No items in the shopping list.</p>;
   }
