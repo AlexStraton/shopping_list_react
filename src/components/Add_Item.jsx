@@ -7,6 +7,7 @@ export default function AddItem({ shoppingList, setShoppingList }) {
 
         <label>Cost:</label>
         <input type='text' />
+        <button>Add</button>
       </form>
     </>
   );

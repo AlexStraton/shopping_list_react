@@ -32,7 +32,9 @@ function App() {
   return (
     <>
       <div>
-        <button onClick={() => setShowAddItem(!showAddItem)}>Add Item</button>
+        <button onClick={() => setShowAddItem(!showAddItem)}>
+          {showAddItem ? "Cancel" : "Add Item"}
+        </button>
         {showAddItem ? (
           <AddItem
             shoppingList={shoppingList}
