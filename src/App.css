@@ -32,3 +32,10 @@ button {
   margin: 0;
   cursor: pointer;
 }
+.form {
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 30px;
+  margin-top: 20px;
+  gap: 10px;
+}

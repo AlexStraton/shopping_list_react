@@ -1,8 +1,7 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import Shopping_List from "./components/Shopping_List";
+import AddItem from "./components/Add_Item";
 
 const initialShoppingList = [
   { id: 1, name: "Milk", quantity: 1, price: 2.99, unitPrice: 2.99 },
@@ -15,6 +14,8 @@ const initialShoppingList = [
 
 function App() {
   const [shoppingList, setShoppingList] = useState(initialShoppingList);
+  const [addedItem, setAddedItem] = useState({});
+  const [showAddItem, setShowAddItem] = useState(false);
 
   function updateShoppingList(id, amount) {
     setShoppingList((prevItems) => {
@@ -31,6 +32,14 @@ function App() {
   return (
     <>
       <div>
+        <button onClick={() => setShowAddItem(!showAddItem)}>Add Item</button>
+        {showAddItem ? (
+          <AddItem
+            shoppingList={shoppingList}
+            setShoppingList={setShoppingList}
+          />
+        ) : null}
+
         <Shopping_List
           updateShoppingList={updateShoppingList}
           shoppingList={shoppingList}
